@@ -13,8 +13,10 @@ module.exports = {
     numList.push(num);
     if (numList.length > 1) {
       return sortData(numList);
-    } return numList;
+    } else {
+      return numList;
 
+    }
   }
 
 }
