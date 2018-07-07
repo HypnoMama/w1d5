@@ -1,3 +1,8 @@
+
+
+
+var dollars = Number(process.argv[2]);
+
 function bottles(dollars){
   //given 20
   var purchasedBottles = dollars/2; //10
@@ -43,9 +48,14 @@ function bottles(dollars){
     calcFree(fullBottles, leftOverCaps, leftOverBottles);
   }
   calcFree(fullBottles, leftOverCaps, leftOverBottles)
-  return Math.floor(totalBottles);
+  return(Math.floor(totalBottles))
 
 }
+
+
+console.log(bottles(dollars));
+// 2 hours
+//10 mins
 
 
   //given a dollar amount
