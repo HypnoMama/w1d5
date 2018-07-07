@@ -13,33 +13,45 @@ function bottles(dollars){
   var leftOverCaps = purchasedBottles%4 //2
   var leftOverBottles = purchasedBottles%2 //0
   fullBottles = freeFromCaps + freeFromBottles
+  var totalBottlesEarned = fullBottles;
+  var totalBottlesEarnedFromCaps = freeFromCaps;
+  var totalBottlesEarnedFromBottles = freeFromBottles;
+  // console.log(leftOverBottles, leftOverCaps)
+
 
   function calcFree(fullBottles, leftOverCaps, leftOverBottles) {
 
     if (fullBottles < 1) {
-      return totalBottles
+      return totalBottles, leftOverCaps, leftOverBottles
     } else {
 
       freeFromCaps = Math.floor(fullBottles/4);
       totalBottles += freeFromCaps;
+      totalBottlesEarnedFromCaps += freeFromCaps;
 
       freeFromBottles = Math.floor(fullBottles/2) //3, 1 leftover
       totalBottles += freeFromBottles //21
+      totalBottlesEarnedFromBottles += freeFromBottles
 
       leftOverCaps += fullBottles%4 // 5
+      // console.log("leftovercaps: " + leftOverCaps)
       leftOverBottles += fullBottles%2 //1
+      // console.log("leftoverbottles" + leftOverBottles)
 
       fullBottles = Math.floor(freeFromCaps + freeFromBottles)//4
+      totalBottlesEarned += fullBottles;
 
 
       if (leftOverCaps >= 4){
         leftOverCaps -= 4
         totalBottles += 1
+        totalBottlesEarnedFromCaps += 1
         fullBottles +=1
       }
       if (leftOverBottles >= 2) {
         leftOverBottles -= 2
         totalBottles += 1
+        totalBottlesEarnedFromBottles += 1
         fullBottles += 1
       }
 
@@ -48,7 +60,11 @@ function bottles(dollars){
     calcFree(fullBottles, leftOverCaps, leftOverBottles);
   }
   calcFree(fullBottles, leftOverCaps, leftOverBottles)
-  return(Math.floor(totalBottles))
+  console.log(totalBottlesEarnedFromBottles, totalBottlesEarnedFromCaps, leftOverBottles)
+  return("TOTAL BOTTLES: " +
+    Math.floor(totalBottles) +  "\nTOTAL EARNED: \n  BOTTLES: "
+    + totalBottlesEarnedFromBottles + "\n  CAPS: " +
+    totalBottlesEarnedFromCaps )
 
 }
 
@@ -56,7 +72,10 @@ function bottles(dollars){
 console.log(bottles(dollars));
 // 2 hours
 //10 mins
+//15 mins
 
+ // "\nREMAINING BOTTLES: " +
+ //    leftOverBottles + "\nREMAINING CAPS: "+ leftOverCaps +
 
   //given a dollar amount
   //returns num of bottles
